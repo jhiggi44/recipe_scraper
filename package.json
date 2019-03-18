@@ -1,0 +1,32 @@
+{
+  "name": "recipe_scraper",
+  "version": "1.0.0",
+  "description": "A simple scraper to get around the fluff stuff in the recipes you find on the web today. Gets the ingredients and directions. That's it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node scrape.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhiggi44/recipe_scraper.git"
+  },
+  "keywords": [
+    "scraper",
+    "recipes",
+    "food"
+  ],
+  "author": "Jordan Higgins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jhiggi44/recipe_scraper/issues"
+  },
+  "homepage": "https://github.com/jhiggi44/recipe_scraper#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "http": "0.0.0",
+    "inquirer": "^6.2.2",
+    "koa": "^2.7.0",
+    "koa-static": "^5.0.0",
+    "request": "^2.88.0"
+  }
+}
