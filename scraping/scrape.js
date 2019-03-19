@@ -25,7 +25,7 @@ function searchHeadersForSelectors($) {
     return { instructions: instructions, ingredients: ingredients };
 }
 function searchTagForSelectors($, tagType, instructions, ingredients) {
-    console.log("finding ingredient and direction selectors in different tag types...");
+    // console.log("finding ingredient and direction selectors in different tag types...");
     $(`${tagType}`).each(function(i, el) {
         if (($(this).text().toLowerCase().includes("instructions") || $(this).text().toLowerCase().includes("directions") 
         || $(this).text().toLowerCase().includes("steps") || $(this).text().toLowerCase().includes("make")) && $(this).text().length < 30) {
@@ -92,7 +92,10 @@ async function searchForRecipe(url) {
             if (error) {
                 reject(error);
             }
-            const $ = cheerio.load(body);
+            const $ = cheerio.load(body, {
+                normalizeWhitespace: true,
+                xmlMode: true
+            });
             let recipeObj = {
                 url: url,
             }
