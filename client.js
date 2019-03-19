@@ -21,7 +21,7 @@ function promptForNextAction(recipeName) {
         type: 'list',
         name: 'nextAction',
         message: "Anything else?",
-        choices: ["Convert recipe to txt file.", `View another recipe for ${recipeName}.`, "Search for a new recipe."]
+        choices: [`Convert recipe to txt file.`, `View another recipe for ${recipeName}.`, `Search for a new recipe.`]
     }).then((answer) => {
         if (answer.nextAction == "Convert recipe to txt file.") {
             const recipe = `From: ${recipes[index].url}\n${recipes[index].ingredients}\n${recipes[index].instructions}`;
@@ -29,9 +29,14 @@ function promptForNextAction(recipeName) {
         }
         if (answer.nextAction == `View another recipe for ${recipeName}.`) {
             index++;
-            const recipe = `From: ${recipes[index].url}\n${recipes[index].ingredients}\n${recipes[index].instructions}`;
-            console.log(recipe);
-            promptForNextAction(recipeName);
+            if (index >= recipes.length) {
+                console.log(`Looks like there are no more recipes for ${recipeName} in the list. Try another search...`);
+                promptForRecipe();
+            } else {
+                const recipe = `From: ${recipes[index].url}\n${recipes[index].ingredients}\n${recipes[index].instructions}`;
+                console.log(recipe);
+                promptForNextAction(recipeName);
+            }
         }
         if (answer.nextAction == "Search for a new recipe.") {
             promptForRecipe();
